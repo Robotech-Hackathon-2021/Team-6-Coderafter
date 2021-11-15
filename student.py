@@ -3,7 +3,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import font
 import random
-#import mysql.connector
+import mysql.connector
+from tkinter import messagebox
 
 class Student:
     def __init__(self,root):
@@ -114,7 +115,7 @@ class Student:
         btn_frame = Frame(labelframeleft, bd=2, relief=RIDGE)
         btn_frame.place(x=0, y=350, width=410, height=37)
 
-        btnAdd = Button(btn_frame, text="ADD", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
+        btnAdd = Button(btn_frame, text="ADD", command=self.add_data, font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
         btnAdd.grid(row=0, column=0, padx=1)
 
         btnUpdate = Button(btn_frame, text="UPDATE", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
@@ -190,8 +191,32 @@ class Student:
 
         self.Stud_Data_Table.pack(fill=BOTH, expand=1)
 
-
-
+    def add_data(self):
+        if self.var_name.get()=="" or self.var_mobile.get()=="" or self.var_idnumber.get()=="":
+            messagebox.showerror("Error", "You are required to fill all the fields to proceed.", parent=self.root)
+        else:
+            try:
+                conn = mysql.connector.connect(host="localhost", username="root", password="Preku@108", database="HostelManagementSys")
+                my_cursor = conn.cursor()
+                my_cursor.execute("insert into student_data values(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                (
+                    self.var_ref.get(),
+                    self.var_name.get(),
+                    self.var_father.get(),
+                    self.var_gender.get(),
+                    self.var_mobile.get(),
+                    self.var_email.get(),
+                    self.var_address.get(),
+                    self.var_state.get(),
+                    self.var_pincode.get(),
+                    self.var_idproof.get(),
+                    self.var_idnumber.get()
+                ))
+                conn.commit()
+                conn.close()
+                messagebox.showinfo("Success", "Student has been added.", parent=self.root)
+            except Exception as es:
+                messagebox.showwarning("Warning", f"Try Again:{str(es)}", parent=self.root)
 
 if __name__== "__main__":
     root = Tk()

@@ -51,7 +51,7 @@ class HostelManagementSystem:
         logout_btn.grid(row=4, column=0, pady=1)
 
         #*************** IMAGE IN RIGHT FRAME **********************
-        img2 = Image.open(r"D:\Robotech - Hackathon\Hostel Management System\img\hostel8.jpg")
+        img2 = Image.open(r"D:\Robotech - Hackathon\Hostel Management System\img\hostell.jpg")
         img2 = img2.resize((1220,510), Image.ANTIALIAS)
         self.photoimg2 = ImageTk.PhotoImage(img2)
 

@@ -89,6 +89,22 @@ class RoomBooking:
         txtTotalCost=ttk.Entry(labelframeleft,width=29,font=("arial",13,"bold"))
         txtTotalCost.grid(row=10,column=1)
 
+        #*************** BUTTONS **********************
+        btn_frame = Frame(labelframeleft, bd=2, relief=RIDGE)
+        btn_frame.place(x=0, y=350, width=410, height=37)
+
+        btnAdd = Button(btn_frame, text="ADD", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
+        btnAdd.grid(row=0, column=0, padx=1)
+
+        btnUpdate = Button(btn_frame, text="UPDATE", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
+        btnUpdate.grid(row=0, column=1, padx=1)
+
+        btnDelete = Button(btn_frame, text="DELETE", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
+        btnDelete.grid(row=0, column=2, padx=1)
+
+        btnReset = Button(btn_frame, text="RESET", font=("arial", 11, "bold"), bg="black", fg="gold", width=10)
+        btnReset.grid(row=0, column=3, padx=1)
+
 
 if __name__ =="__main__":
     root=Tk()
